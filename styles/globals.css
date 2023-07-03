@@ -14,8 +14,9 @@
   position: fixed;
   display: flex;
   justify-content: center;
-  padding: 120px 24px 160px 24px;
+  padding: 120px 12px 160px 12px;
   pointer-events: none;
+  
 }
 
 .main:before {
@@ -99,7 +100,8 @@
 }
 
 .blue_gradient {
-  @apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r font-notoSansJP  from-gray-400 via-pink-300 to-gray-400 bg-clip-text text-transparent;
+  text-shadow: 2px 2px 4px rgba(41, 164, 158, 0.2)
 }
 
 .desc {
@@ -108,6 +110,7 @@
 
 .search_input {
   @apply block w-full rounded-md border border-gray-200 bg-white py-2.5 font-notoSansJP pl-5 pr-12 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
+  
 }
 
 .copy_btn {
@@ -170,3 +173,5 @@
 .flex-between {
   @apply flex justify-between items-center;
 }
+
+
