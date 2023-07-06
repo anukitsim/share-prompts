@@ -5,33 +5,37 @@ import { useEffect, useRef } from "react";
 
 const Form = ({ type, post, setPost, submitting, handleSubmit, ...passedProps }) => {
   const textareaRef = useRef(null);
-  const placeholderText = "Enter your prompt";
+  const placeholderText = "Enter your prompt here...";
 
   useEffect(() => {
-    const typewriter = {
-      currentText: "",
-      currentIndex: 0,
-      delay: 75,
-      intervalId: null,
-      startTyping: function () {
-        this.intervalId = setInterval(() => {
-          if (this.currentIndex <= placeholderText.length) {
-            this.currentText = placeholderText.substring(0, this.currentIndex);
-            this.currentIndex++;
-          } else {
-            clearInterval(this.intervalId);
-          }
-          textareaRef.current.placeholder = this.currentText;
-        }, this.delay);
-      },
-    };
+    if (type !== "Edit") {
+      const typewriter = {
+        currentText: "",
+        currentIndex: 0,
+        delay: 75,
+        intervalId: null,
+        startTyping: function () {
+          this.intervalId = setInterval(() => {
+            if (this.currentIndex <= placeholderText.length) {
+              this.currentText = placeholderText.substring(0, this.currentIndex);
+              this.currentIndex++;
+            } else {
+              clearInterval(this.intervalId);
+            }
+            textareaRef.current.placeholder = this.currentText;
+          }, this.delay);
+        },
+      };
 
-    typewriter.startTyping();
+      typewriter.startTyping();
 
-    return () => {
-      clearInterval(typewriter.intervalId);
-    };
-  }, []);
+      return () => {
+        clearInterval(typewriter.intervalId);
+      };
+    }
+  }, [type]);
+
+  
 
   return (
     <section className="w-full max-w-full flex-start flex-col">
